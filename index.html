@@ -1,0 +1,3475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Talentika — Engineering the Workforce Behind Global Innovation."
+  >
+
+  <title>Talentika</title>
+
+  <style>
+    :root {
+      --white: #ffffff;
+
+      --midnight: #0a192f;
+      --midnight-active: #081426;
+      --midnight-hover: #09172a;
+      --midnight-light: #e7e8ea;
+
+      --platinum: #f0f2f5;
+      --platinum-dark: #545556;
+      --platinum-hover: #909193;
+
+      --blue: #4d77ff;
+      --blue-light: #edf1ff;
+      --blue-active: #c8d5ff;
+      --blue-hover: #e4ebff;
+
+      --gcc: #00d4aa;
+      --gcc-light: #e6fbf7;
+
+      --rpo: #31c0ff;
+      --rpo-light: #eaf9ff;
+
+      --ai: #ff6080;
+      --ai-light: #ffeff2;
+
+      --footer: #09172a;
+      --footer-text: #b3b8bf;
+
+      --font-heading: "Geist", "Inter", Arial, sans-serif;
+      --font-body: "Noto Sans", Arial, sans-serif;
+
+      --fs-hero: 60px;
+      --fs-section: 42px;
+      --fs-card: 28px;
+      --fs-body: 16px;
+      --fs-small: 14px;
+      --fs-caption: 12px;
+
+      --radius-10: 10px;
+      --radius-16: 16px;
+      --radius-20: 20px;
+      --radius-42: 42px;
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --motion-duration: 760ms;
+      --hover-duration: 240ms;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--white);
+      color: var(--midnight);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* ---------------------------------
+       COMMON
+    --------------------------------- */
+
+    .page {
+      position: relative;
+      width: 100%;
+      overflow: clip;
+    }
+
+    .container {
+      width: min(1320px, calc(100% - 120px));
+      margin-inline: auto;
+    }
+
+    .accent {
+      color: var(--blue);
+    }
+
+    .section-eyebrow {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    .section-heading {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 2.92vw, 42px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 60px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border-radius: var(--radius-10);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      cursor: pointer;
+      transition:
+        background var(--hover-duration) ease,
+        color var(--hover-duration) ease,
+        border-color var(--hover-duration) ease;
+    }
+
+    .button--primary {
+      border: 1px solid var(--midnight);
+      background: var(--midnight);
+      color: var(--white);
+    }
+
+    .button--primary:hover,
+    .button--primary:focus-visible {
+      background: var(--midnight-hover);
+      outline: none;
+    }
+
+    .button--secondary {
+      border: 1px solid var(--midnight);
+      background: transparent;
+      color: var(--midnight);
+    }
+
+    .button--secondary:hover,
+    .button--secondary:focus-visible {
+      border-color: var(--midnight);
+      background: var(--midnight);
+      color: var(--white);
+      outline: none;
+    }
+
+    /* ---------------------------------
+       SCROLL REVEAL
+    --------------------------------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity var(--motion-duration) var(--ease),
+        transform var(--motion-duration) var(--ease);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger:nth-child(1) {
+      transition-delay: 0ms;
+    }
+
+    .reveal-stagger:nth-child(2) {
+      transition-delay: 80ms;
+    }
+
+    .reveal-stagger:nth-child(3) {
+      transition-delay: 160ms;
+    }
+
+    .reveal-stagger:nth-child(4) {
+      transition-delay: 240ms;
+    }
+
+    .reveal-service:nth-child(1) {
+      transition-delay: 0ms;
+    }
+
+    .reveal-service:nth-child(2) {
+      transition-delay: 100ms;
+    }
+
+    .reveal-service:nth-child(3) {
+      transition-delay: 200ms;
+    }
+
+    .reveal-case:nth-child(1) {
+      transition-delay: 0ms;
+    }
+
+    .reveal-case:nth-child(2) {
+      transition-delay: 80ms;
+    }
+
+    .reveal-case:nth-child(3) {
+      transition-delay: 160ms;
+    }
+
+    /* ---------------------------------
+       HEADER
+    --------------------------------- */
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: 105px;
+      padding: 14px 16px 0;
+    }
+
+    .site-header__inner {
+      width: 100%;
+      height: 91px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 48px 25px 44px;
+      border-radius: var(--radius-16);
+      background: var(--white);
+    }
+
+    .site-header__brand {
+      width: 126px;
+      height: 26px;
+      flex: 0 0 auto;
+    }
+
+    .site-header__brand img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .site-nav,
+    .site-nav__list {
+      display: flex;
+      align-items: center;
+    }
+
+    .site-nav {
+      gap: 60px;
+    }
+
+    .site-nav__list {
+      gap: 60px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav__link {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      color: var(--midnight);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      white-space: nowrap;
+      transition: color var(--hover-duration) ease;
+    }
+
+    .site-nav__link:hover,
+    .site-nav__link:focus-visible {
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .site-nav__line {
+      width: 26px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .site-nav__line img {
+      width: 26px;
+      height: 1px;
+    }
+
+    .site-cta {
+      position: relative;
+      width: 138px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+      padding: 10px;
+      border: 0;
+      border-radius: var(--radius-10);
+      background: var(--midnight);
+      color: var(--midnight-light);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      cursor: pointer;
+      transition: background var(--hover-duration) ease;
+    }
+
+    .site-cta:hover,
+    .site-cta:focus-visible {
+      background: var(--midnight-hover);
+      outline: none;
+    }
+
+    .site-cta__shimmer {
+      position: absolute;
+      top: -3.5px;
+      left: -75px;
+      width: 72px;
+      height: 61px;
+      opacity: 0.65;
+      transition: transform 700ms var(--ease);
+    }
+
+    .site-cta:hover .site-cta__shimmer,
+    .site-cta:focus-visible .site-cta__shimmer {
+      transform: translateX(250px);
+    }
+
+    .site-cta__shimmer img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ---------------------------------
+       MOBILE NAV
+    --------------------------------- */
+
+    .site-menu-toggle {
+      display: none;
+      position: relative;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .site-menu-toggle span {
+      position: absolute;
+      left: 10px;
+      width: 24px;
+      height: 2px;
+      background: var(--midnight);
+      transition:
+        transform var(--hover-duration) var(--ease),
+        top var(--hover-duration) var(--ease),
+        opacity var(--hover-duration) ease,
+        background var(--hover-duration) ease;
+    }
+
+    .site-menu-toggle span:nth-child(1) {
+      top: 13px;
+    }
+
+    .site-menu-toggle span:nth-child(2) {
+      top: 21px;
+    }
+
+    .site-menu-toggle span:nth-child(3) {
+      top: 29px;
+    }
+
+    .site-menu-toggle:hover span,
+    .site-menu-toggle:focus-visible span {
+      background: var(--platinum-hover);
+    }
+
+    .site-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      top: 21px;
+      transform: rotate(45deg);
+    }
+
+    .site-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .site-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      top: 21px;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        max-height 420ms var(--ease),
+        opacity 280ms ease,
+        padding 420ms var(--ease);
+    }
+
+    .mobile-menu.is-open {
+      max-height: 540px;
+      padding-top: 12px;
+      opacity: 1;
+    }
+
+    .mobile-menu__inner {
+      padding-top: 8px;
+      border-radius: var(--radius-16);
+      background: var(--white);
+    }
+
+    .mobile-menu__list {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mobile-menu__link {
+      display: block;
+      padding: 14px 16px;
+      border-radius: var(--radius-10);
+      color: var(--midnight);
+      font-size: 15px;
+      font-weight: 600;
+      transition:
+        background var(--hover-duration) ease,
+        color var(--hover-duration) ease;
+    }
+
+    .mobile-menu__link:hover,
+    .mobile-menu__link:focus-visible {
+      background: var(--blue-light);
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .mobile-menu__cta {
+      width: calc(100% - 32px);
+      margin: 10px 16px 8px;
+    }
+
+    /* ---------------------------------
+       HERO
+    --------------------------------- */
+
+    .hero {
+      position: relative;
+      min-height: 937px;
+      padding-top: 105px;
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 0;
+      width: 100%;
+      height: 850px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      min-height: 588px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0 60px;
+    }
+
+    .hero__article {
+      width: 598px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero__title {
+      margin: 0;
+      color: var(--midnight);
+      font-family: var(--font-heading);
+      font-size: clamp(42px, 4.1667vw, 60px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .hero__description {
+      width: 506px;
+      margin: 0;
+      color: var(--platinum-dark);
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero__features {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 51px;
+      padding: 80px 60px 60px;
+    }
+
+    .feature-card {
+      min-height: 209px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      border-radius: var(--radius-20);
+      transition: transform var(--hover-duration) var(--ease);
+    }
+
+    .feature-card:hover,
+    .feature-card:focus-visible {
+      transform: translateY(-6px);
+      outline: none;
+    }
+
+    .feature-card--gcc {
+      background: var(--gcc-light);
+    }
+
+    .feature-card--rpo {
+      background: var(--rpo-light);
+    }
+
+    .feature-card--ai {
+      background: var(--ai-light);
+    }
+
+    .feature-card__inner {
+      width: 100%;
+      height: 169px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .feature-card__icon {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .feature-card__eyebrow {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 30px;
+      text-transform: uppercase;
+    }
+
+    .feature-card__title {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 30px;
+    }
+
+    /* ---------------------------------
+       PARTNERS
+    --------------------------------- */
+
+    .partners {
+      padding-top: 60px;
+    }
+
+    .partners__heading {
+      margin: 0 60px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    .partners__ticker {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .ticker__track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      white-space: nowrap;
+      animation: ticker-left 28s linear infinite;
+    }
+
+    .ticker__item {
+      flex: 0 0 auto;
+      color: #909193;
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 30px;
+    }
+
+    .ticker__item--bmc {
+      font-size: 20px;
+    }
+
+    @keyframes ticker-left {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes ticker-right {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    /* ---------------------------------
+       STATS
+    --------------------------------- */
+
+    .stats {
+      padding: 80px 0;
+    }
+
+    .stats__intro {
+      width: 647px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 132px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .stat__number {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-family: var(--font-heading);
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 42px;
+    }
+
+    .stat__description {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .stat__source {
+      color: var(--midnight);
+      font-size: 12px;
+      line-height: 16px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ---------------------------------
+       SERVICES
+    --------------------------------- */
+
+    .services {
+      position: relative;
+      overflow: clip;
+      padding: 80px 0;
+      background: var(--midnight);
+      color: var(--blue-light);
+    }
+
+    .services__background-number {
+      position: absolute;
+      top: -3px;
+      right: -2px;
+      z-index: 0;
+      color: var(--midnight-active);
+      font-family: var(--font-heading);
+      font-size: 542.788px;
+      font-weight: 600;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .services__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .services__intro {
+      width: 579px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .services__heading {
+      width: 100%;
+      margin: 10px 0 0;
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 2.92vw, 42px);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .services__description {
+      width: 281px;
+      margin: 0;
+      color: var(--midnight-light);
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 128px;
+      margin-top: 90px;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform var(--hover-duration) var(--ease);
+    }
+
+    .service-card:hover,
+    .service-card:focus-within {
+      transform: translateY(-6px);
+    }
+
+    .service-card__icon {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .service-card__icon--gcc {
+      width: 65px;
+      height: 55px;
+    }
+
+    .service-card__icon--rpo {
+      width: 63px;
+      height: 52px;
+    }
+
+    .service-card__details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .service-card__title {
+      width: 203px;
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+    }
+
+    .service-card__title--gcc {
+      color: var(--gcc);
+    }
+
+    .service-card__title--rpo {
+      color: var(--rpo);
+    }
+
+    .service-card__title--ai {
+      color: var(--ai);
+    }
+
+    .service-card__description {
+      margin: 0;
+      color: var(--platinum);
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .service-card__explore {
+      width: fit-content;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+      color: var(--midnight-light);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      transition: color var(--hover-duration) ease;
+    }
+
+    .service-card__explore:hover,
+    .service-card__explore:focus-visible {
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .service-card__explore img {
+      width: 26px;
+      height: 1px;
+    }
+
+    /* ---------------------------------
+       AI
+    --------------------------------- */
+
+    .ai-core {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .ai-core__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ai-core__title {
+      margin-top: 10px;
+    }
+
+    .ai-core__image {
+      width: 100%;
+      height: 655px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--radius-42);
+    }
+
+    .ai-core__description {
+      width: 511px;
+      margin: 0;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    /* ---------------------------------
+       CASE STUDIES
+    --------------------------------- */
+
+    .case-studies {
+      padding: 0 0 80px;
+      overflow: clip;
+    }
+
+    .case-studies__title {
+      position: relative;
+      width: 100%;
+      height: clamp(92px, 11.32vw, 163px);
+      overflow: visible;
+    }
+
+    .case-studies__title-text {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: max-content;
+      max-width: none;
+      margin: 0;
+      transform: translateX(-50%);
+      color: var(--blue-light);
+      font-family: var(--font-heading);
+      font-size: clamp(74px, 12.5vw, 180px);
+      font-weight: 600;
+      line-height: 0.91;
+      letter-spacing: -0.055em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .case-studies__explore {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 24px;
+    }
+
+    .case-studies__more {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .case-studies__more-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      color: var(--midnight);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      transition: color var(--hover-duration) ease;
+    }
+
+    .case-studies__more-link:hover,
+    .case-studies__more-link:focus-visible {
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .case-studies__more-link img {
+      width: 26px;
+      height: 1px;
+    }
+
+    .case-studies__arrow {
+      width: 24px;
+      height: 24px;
+    }
+
+    .case-studies__grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 504px minmax(0, 390px) minmax(0, 390px);
+      gap: 20px;
+    }
+
+    /* Editable HTML cards */
+    .case-study {
+      min-width: 0;
+      min-height: 463px;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+      padding: 24px;
+      border-radius: var(--radius-42);
+      background: var(--blue-light);
+      color: var(--midnight);
+      overflow: hidden;
+      transition: transform var(--hover-duration) var(--ease);
+      will-change: transform;
+    }
+
+    .case-study:hover,
+    .case-study:focus-visible {
+      transform: translateY(-8px);
+      outline: none;
+    }
+
+    .case-study__category {
+      width: fit-content;
+      flex: 0 0 auto;
+      padding: 10px;
+      border: 0.5px solid var(--platinum-dark);
+      border-radius: var(--radius-10);
+      color: var(--platinum-dark);
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .case-study__logo {
+      width: 109px;
+      height: 24px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .case-study__body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .case-study__metric {
+      width: 162px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .case-study__value {
+      margin: 0;
+      color: var(--blue);
+      font-family: var(--font-heading);
+      font-size: clamp(46px, 4.17vw, 60px);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .case-study__metric-description {
+      min-height: 24px;
+      margin: 0;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .case-study__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .case-study__title {
+      max-width: 100%;
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 1.945vw, 28px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .case-study__description {
+      max-width: 291px;
+      min-height: 37px;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ---------------------------------
+       FOOTER
+    --------------------------------- */
+
+    .site-footer {
+      position: relative;
+      overflow: clip;
+      background: var(--footer);
+      color: var(--white);
+    }
+
+    .footer__top {
+      padding: 80px 60px 42px;
+      border-top-left-radius: var(--radius-42);
+      border-top-right-radius: var(--radius-42);
+      background: var(--footer);
+    }
+
+    .footer__cta {
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 42px;
+    }
+
+    .footer__cta-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__eyebrow {
+      color: var(--midnight-light);
+    }
+
+    .footer__title {
+      width: 674px;
+      margin: 0;
+      color: var(--blue);
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 4.17vw, 60px);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .footer__button {
+      width: fit-content;
+    }
+
+    .footer__cities {
+      width: calc(100% + 120px);
+      margin: 42px -60px 0;
+      overflow: hidden;
+    }
+
+    .footer__cities-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      white-space: nowrap;
+      animation: ticker-right 30s linear infinite;
+    }
+
+    .footer__cities-track--reverse {
+      animation: ticker-left 30s linear infinite;
+    }
+
+    .footer__city {
+      flex: 0 0 auto;
+      padding: 20px;
+      border-radius: var(--radius-10);
+      color: var(--blue-active);
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    /*
+      Figma's dark footer content area.
+      The first column is 315px, followed by
+      a 220px spacing before the service columns.
+    */
+    .footer__main {
+      position: relative;
+      padding: 80px 60px 0;
+      background: var(--midnight);
+    }
+
+    .footer__main-grid {
+      display: grid;
+      grid-template-columns: 315px minmax(0, 1fr);
+      gap: 220px;
+      align-items: start;
+    }
+
+    .footer__brand-column {
+      display: flex;
+      flex-direction: column;
+      gap: 42px;
+    }
+
+    .footer__identity {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .footer__logo {
+      width: 164px;
+      height: 33px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .footer__tagline {
+      width: 315px;
+      margin: 0;
+      color: var(--blue);
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .footer__service-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .footer__service-icon {
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .footer__service-icon--gcc {
+      width: 64px;
+      height: 31px;
+    }
+
+    .footer__service-icon--rpo {
+      width: 92px;
+      height: 32px;
+    }
+
+    .footer__service-icon--ai {
+      width: 79px;
+      height: 32px;
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--footer-text);
+    }
+
+    .footer__contact-title {
+      margin: 0;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+    }
+
+    .footer__contact-row {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      line-height: 32px;
+    }
+
+    .footer__socials {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    .footer__social-link {
+      width: 46px;
+      height: 46px;
+      display: block;
+      transition: transform var(--hover-duration) var(--ease);
+    }
+
+    .footer__social-link:hover,
+    .footer__social-link:focus-visible {
+      transform: translateY(-4px);
+      outline: none;
+    }
+
+    .footer__social-link img {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .footer__links {
+      display: grid;
+      grid-template-columns: 124px 124px 178px 124px;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer__column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .footer__column-title {
+      margin: 0;
+      color: var(--footer-text);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+      white-space: nowrap;
+    }
+
+    .footer__link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer__link {
+      display: inline-flex;
+      width: fit-content;
+      flex-direction: column;
+      gap: 3px;
+      color: var(--midnight-light);
+      font-size: 12px;
+      line-height: 1.4;
+      transition: color var(--hover-duration) ease;
+    }
+
+    .footer__link:hover,
+    .footer__link:focus-visible {
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .footer__link img {
+      width: 26px;
+      height: 1px;
+    }
+
+    .footer__ecosystem {
+      width: 178px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer__ecosystem-divider {
+      width: 100%;
+      height: 1px;
+    }
+
+    .footer__ecosystem-item {
+      width: 178px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer__ecosystem-logo {
+      width: 136px;
+      height: 24px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .footer__ecosystem-arrow {
+      width: 24px;
+      height: 24px;
+    }
+
+    /*
+      Copyright/legal row starts at the same x-position
+      as the Services column:
+      315px brand + 220px Figma gap = 535px.
+    */
+    .footer__legal {
+      width: calc(100% - 535px);
+      margin-left: 535px;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 0 24px;
+      color: var(--footer-text);
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .footer__legal-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .footer__legal-link {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+      color: var(--midnight-light);
+      white-space: nowrap;
+      transition: color var(--hover-duration) ease;
+    }
+
+    .footer__legal-link:hover,
+    .footer__legal-link:focus-visible {
+      color: var(--platinum-hover);
+      outline: none;
+    }
+
+    .footer__legal-link img {
+      width: 26px;
+      height: 1px;
+    }
+
+    /*
+      Dedicated bottom layer from the Figma handoff.
+      Skyline is anchored here rather than to the page,
+      preventing any overlap with the hero or content above.
+    */
+    .footer__bottom {
+      position: relative;
+      width: 100%;
+      height: 247px;
+      overflow: hidden;
+      background: var(--midnight);
+    }
+
+    .footer__skyline {
+      position: absolute;
+      left: 50%;
+      bottom: -1px;
+      z-index: 2;
+      width: 1448px;
+      max-width: none;
+      height: 150px;
+      transform: translateX(-50%);
+      object-fit: contain;
+      object-position: bottom center;
+      pointer-events: none;
+    }
+
+    /* ---------------------------------
+       CHAT
+    --------------------------------- */
+
+    .chat {
+      position: fixed;
+      right: 50px;
+      top: 689px;
+      z-index: 90;
+      width: 91px;
+      height: 91px;
+      aspect-ratio: 1 / 1;
+      display: block;
+      overflow: hidden;
+      transition: transform var(--hover-duration) var(--ease);
+    }
+
+    .chat img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .chat:hover,
+    .chat:focus-visible {
+      transform: translateY(-5px);
+      outline: none;
+    }
+
+    /* ---------------------------------
+       TABLET
+    --------------------------------- */
+
+    @media (max-width: 1200px) {
+      .site-nav,
+      .site-nav__list {
+        gap: 28px;
+      }
+
+      .site-header__inner {
+        padding-inline: 32px;
+      }
+
+      .hero__content {
+        padding-inline: 40px;
+      }
+
+      .hero__features {
+        padding-inline: 40px;
+        gap: 24px;
+      }
+
+      .stats__grid {
+        gap: 48px;
+      }
+
+      .services__grid {
+        gap: 56px;
+      }
+
+      .case-studies__grid {
+        grid-template-columns: 1.25fr 1fr 1fr;
+      }
+
+      .footer__links {
+        gap: 36px;
+      }
+
+      .footer__cities {
+        width: calc(100% + 80px);
+        margin-inline: -40px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .site-header {
+        height: auto;
+        padding: 12px;
+      }
+
+      .site-header__inner {
+        height: 72px;
+        padding: 14px 18px;
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .site-menu-toggle,
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 96px;
+      }
+
+      .hero__media {
+        height: 680px;
+      }
+
+      .hero__content {
+        min-height: 520px;
+        padding: 80px 32px 48px;
+      }
+
+      .hero__article {
+        width: min(100%, 598px);
+      }
+
+      .hero__title {
+        font-size: clamp(44px, 5.08vw, 52px);
+      }
+
+      .hero__description {
+        width: min(100%, 506px);
+      }
+
+      .hero__features {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 48px 32px;
+      }
+
+      .partners {
+        padding-top: 40px;
+      }
+
+      .partners__heading {
+        margin-inline: 32px;
+      }
+
+      .stats,
+      .services,
+      .ai-core {
+        padding-block: 60px;
+      }
+
+      .stats__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 50px 60px;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 64px 56px;
+      }
+
+      .services__background-number {
+        right: -100px;
+      }
+
+      .ai-core__image {
+        height: 520px;
+      }
+
+      .case-studies__title {
+        height: clamp(90px, 13vw, 118px);
+      }
+
+      .case-studies__title-text {
+        font-size: clamp(70px, 12.5vw, 128px);
+        letter-spacing: -0.06em;
+      }
+
+      .case-studies__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .case-study:first-child {
+        grid-column: span 2;
+      }
+
+      .case-study {
+        min-height: 440px;
+      }
+
+      .footer__top,
+      .footer__main {
+        padding-inline: 32px;
+      }
+
+      .footer__cities {
+        width: calc(100% + 64px);
+        margin-inline: -32px;
+      }
+
+      .footer__main-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .footer__links {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .footer__legal {
+        width: 100%;
+        margin-left: 0;
+        padding-inline: 0;
+      }
+
+      .footer__bottom {
+        height: 247px;
+      }
+
+      .footer__skyline {
+        width: 1448px;
+        max-width: none;
+      }
+
+      .chat {
+        top: auto;
+        right: 24px;
+        bottom: 24px;
+        width: 76px;
+        height: 76px;
+      }
+    }
+
+    /* ---------------------------------
+       MOBILE
+    --------------------------------- */
+
+    @media (max-width: 768px) {
+      .container {
+        width: min(100%, calc(100% - 40px));
+      }
+
+      .site-header {
+        padding: 10px;
+      }
+
+      .site-header__inner {
+        height: 64px;
+        border-radius: 14px;
+      }
+
+      .site-header__brand {
+        width: 112px;
+        height: 24px;
+      }
+
+      .mobile-menu__cta {
+        width: calc(100% - 32px);
+        margin-inline: 16px;
+      }
+
+      .hero {
+        padding-top: 84px;
+      }
+
+      .hero__media {
+        height: 560px;
+      }
+
+      .hero__content {
+        min-height: 520px;
+        gap: 28px;
+        padding: 56px 20px 36px;
+      }
+
+      .hero__title {
+        font-size: clamp(38px, 10.5vw, 44px);
+        line-height: 1.02;
+      }
+
+      .hero__description {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .hero__actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero__features {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 28px 20px 48px;
+      }
+
+      .feature-card {
+        min-height: 170px;
+      }
+
+      .feature-card__inner {
+        height: 130px;
+      }
+
+      .partners {
+        padding-top: 36px;
+      }
+
+      .partners__heading {
+        margin-inline: 20px;
+      }
+
+      .ticker__track {
+        gap: 34px;
+      }
+
+      .ticker__item {
+        font-size: 20px;
+      }
+
+      .stats,
+      .services,
+      .ai-core {
+        padding-block: 52px;
+      }
+
+      .stats__intro,
+      .services__intro {
+        width: 100%;
+      }
+
+      .section-heading,
+      .services__heading {
+        font-size: 34px;
+        line-height: 36px;
+      }
+
+      .stats__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-top: 34px;
+      }
+
+      .services__background-number {
+        display: none;
+      }
+
+      .services__grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        margin-top: 52px;
+      }
+
+      .ai-core__image {
+        height: auto;
+        aspect-ratio: 1.5534 / 1;
+      }
+
+      .ai-core__description {
+        width: 100%;
+      }
+
+      .case-studies {
+        padding-bottom: 56px;
+      }
+
+      .case-studies__title {
+        height: 22vw;
+        min-height: 82px;
+        max-height: 112px;
+      }
+
+      .case-studies__title-text {
+        left: 50%;
+        font-size: clamp(60px, 14vw, 108px);
+        letter-spacing: -0.065em;
+        line-height: 0.9;
+      }
+
+      .case-studies__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .case-study:first-child {
+        grid-column: auto;
+      }
+
+      .case-study {
+        min-height: 0;
+        gap: 34px;
+        padding: 20px;
+        border-radius: 32px;
+      }
+
+      .case-study__value {
+        font-size: clamp(44px, 14vw, 58px);
+      }
+
+      .case-study__title {
+        font-size: clamp(22px, 7.2vw, 28px);
+        line-height: 1.05;
+      }
+
+      .case-study__description {
+        max-width: 100%;
+      }
+
+      .footer__top {
+        padding: 56px 20px 32px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+      }
+
+      .footer__cta {
+        width: 100%;
+      }
+
+      .footer__title {
+        width: 100%;
+        font-size: 40px;
+      }
+
+      .footer__cities {
+        width: calc(100% + 40px);
+        margin: 34px -20px 0;
+      }
+
+      .footer__city {
+        padding: 16px;
+        font-size: 14px;
+      }
+
+      .footer__main {
+        padding: 56px 20px 0;
+      }
+
+      .footer__main-grid {
+        gap: 48px;
+      }
+
+      .footer__links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 28px;
+      }
+
+      .footer__ecosystem,
+      .footer__ecosystem-item {
+        width: 100%;
+      }
+
+      .footer__legal {
+        width: 100%;
+        min-height: 120px;
+        margin-left: 0;
+        padding: 42px 0 20px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer__legal-links {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
+
+      .footer__bottom {
+        height: 190px;
+      }
+
+      .footer__skyline {
+        width: 1100px;
+        max-width: none;
+        height: 150px;
+      }
+
+      .chat {
+        width: 72px;
+        height: 72px;
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .feature-card,
+      .service-card,
+      .case-study,
+      .site-nav__link,
+      .site-cta,
+      .button,
+      .chat {
+        transition-duration: 0.01ms !important;
+      }
+
+      .ticker__track,
+      .footer__cities-track {
+        animation-play-state: paused !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+      <div class="site-header__inner">
+
+        <a
+          class="site-header__brand"
+          href="#top"
+          aria-label="Talentika home"
+        >
+          <img
+            src="./assets/logo-header.png"
+            alt="Talentika"
+            width="126"
+            height="26"
+          >
+        </a>
+
+        <nav class="site-nav" aria-label="Main navigation">
+
+          <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="#services">
+                <span>GCC services</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="site-nav__link" href="#services">
+                <span>RPO</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="site-nav__link" href="#ai-core">
+                <span>Digital</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="site-nav__link" href="#case-studies">
+                <span>Case studies</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="site-nav__link" href="#about">
+                <span>About</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="site-nav__link" href="#contact">
+                <span>Contact</span>
+                <span class="site-nav__line">
+                  <img
+                    src="./assets/line-arrow.svg"
+                    alt=""
+                  >
+                </span>
+              </a>
+            </li>
+
+          </ul>
+
+          <a class="site-cta" href="#contact">
+
+            <span class="site-cta__shimmer" aria-hidden="true">
+              <img
+                src="./assets/cta-shimmer.svg"
+                alt=""
+              >
+            </span>
+
+            <span>Talk to us</span>
+
+          </a>
+
+        </nav>
+
+        <button
+          class="site-menu-toggle"
+          type="button"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+      <!-- MOBILE NAV -->
+      <div class="mobile-menu" id="mobile-menu">
+
+        <div class="mobile-menu__inner">
+
+          <nav aria-label="Mobile navigation">
+
+            <ul class="mobile-menu__list">
+
+              <li>
+                <a class="mobile-menu__link" href="#services">
+                  GCC services
+                </a>
+              </li>
+
+              <li>
+                <a class="mobile-menu__link" href="#services">
+                  RPO
+                </a>
+              </li>
+
+              <li>
+                <a class="mobile-menu__link" href="#ai-core">
+                  Digital
+                </a>
+              </li>
+
+              <li>
+                <a class="mobile-menu__link" href="#case-studies">
+                  Case studies
+                </a>
+              </li>
+
+              <li>
+                <a class="mobile-menu__link" href="#about">
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a class="mobile-menu__link" href="#contact">
+                  Contact
+                </a>
+              </li>
+
+            </ul>
+
+            <a class="site-cta mobile-menu__cta" href="#contact">
+
+              <span class="site-cta__shimmer" aria-hidden="true">
+                <img
+                  src="./assets/cta-shimmer.svg"
+                  alt=""
+                >
+              </span>
+
+              <span>Talk to us</span>
+
+            </a>
+
+          </nav>
+
+        </div>
+
+      </div>
+
+    </header>
+
+    <main id="top">
+
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+
+        <div class="hero__media" aria-hidden="true">
+          <img
+            src="./assets/hero-background.png"
+            alt=""
+            width="1440"
+            height="850"
+          >
+        </div>
+
+        <div class="hero__content reveal">
+
+          <div class="hero__article">
+
+            <h1 class="hero__title" id="hero-title">
+              We <span class="accent">build &amp; scale</span><br>
+              Global Capability<br>
+              Centers
+            </h1>
+
+            <p class="hero__description">
+              From location strategy and talent acquisition to digital
+              transformation, a single partner for your entire GCC journey.
+            </p>
+
+          </div>
+
+          <div class="hero__actions">
+
+            <a class="button button--primary" href="#contact">
+              Start Your GCC Journey
+            </a>
+
+            <a class="button button--secondary" href="#case-studies">
+              See Our Work
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="hero__features">
+
+          <a class="feature-card feature-card--gcc reveal" href="#services">
+
+            <div class="feature-card__inner">
+
+              <img
+                class="feature-card__icon"
+                src="./assets/gcc-feature-icon.png"
+                alt="GCC services"
+                width="64"
+                height="64"
+              >
+
+              <div>
+                <p class="feature-card__eyebrow">
+                  For enterprises
+                </p>
+
+                <p class="feature-card__title">
+                  Setting up a GCC?
+                </p>
+              </div>
+
+            </div>
+
+          </a>
+
+          <a class="feature-card feature-card--rpo reveal" href="#services">
+
+            <div class="feature-card__inner">
+
+              <img
+                class="feature-card__icon"
+                src="./assets/rpo-feature-icon.png"
+                alt="RPO services"
+                width="64"
+                height="64"
+              >
+
+              <div>
+                <p class="feature-card__eyebrow">
+                  For HR &amp; talent teams
+                </p>
+
+                <p class="feature-card__title">
+                  Scaling your team?
+                </p>
+              </div>
+
+            </div>
+
+          </a>
+
+          <a class="feature-card feature-card--ai reveal" href="#ai-core">
+
+            <div class="feature-card__inner">
+
+              <img
+                class="feature-card__icon"
+                src="./assets/ai-feature-icon.png"
+                alt="AI and digital transformation"
+                width="64"
+                height="64"
+              >
+
+              <div>
+                <p class="feature-card__eyebrow">
+                  For CTOs &amp; CIOs
+                </p>
+
+                <p class="feature-card__title">
+                  Transforming digitally?
+                </p>
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </section>
+
+      <!-- PARTNERS -->
+      <section
+        class="partners"
+        id="about"
+        aria-labelledby="partners-title"
+      >
+
+        <h2 class="partners__heading" id="partners-title">
+          DOMAIN &amp; PARTNERS
+        </h2>
+
+        <div class="partners__ticker">
+
+          <div class="ticker__track">
+
+            <span class="ticker__item ticker__item--bmc">
+              BMC SOFTWARE
+            </span>
+
+            <span class="ticker__item">Cummins</span>
+            <span class="ticker__item">Mastercard</span>
+            <span class="ticker__item">PWC</span>
+            <span class="ticker__item">Booking.com</span>
+            <span class="ticker__item">Medline Industries</span>
+            <span class="ticker__item">Cummins</span>
+
+            <span class="ticker__item ticker__item--bmc">
+              BMC SOFTWARE
+            </span>
+
+            <span class="ticker__item">Cummins</span>
+            <span class="ticker__item">Mastercard</span>
+            <span class="ticker__item">PWC</span>
+            <span class="ticker__item">Booking.com</span>
+            <span class="ticker__item">Medline Industries</span>
+            <span class="ticker__item">Cummins</span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- STATS -->
+      <section class="stats" aria-labelledby="stats-title">
+
+        <div class="container">
+
+          <div class="stats__intro reveal">
+
+            <p class="section-eyebrow">
+              BY THE NUMBERS
+            </p>
+
+            <h2 class="section-heading" id="stats-title">
+              <span class="accent">Outcomes</span> that speak<br>
+              for themselves
+            </h2>
+
+          </div>
+
+          <div class="stats__grid">
+
+            <article class="stat reveal reveal-stagger">
+
+              <div>
+                <p class="stat__number">64+</p>
+                <p class="stat__description">
+                  India GCC market size (2024, USD bn)
+                </p>
+              </div>
+
+              <a
+                class="stat__source"
+                href="https://community.nasscom.in/communities/global-capability-centers/gcc-annual-report-2024"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                nasscom GCC Annual Report 2024
+              </a>
+
+            </article>
+
+            <article class="stat reveal reveal-stagger">
+
+              <div>
+                <p class="stat__number">110+</p>
+                <p class="stat__description">
+                  New GCCs launched in India · 2024–25
+                </p>
+              </div>
+
+              <a
+                class="stat__source"
+                href="https://zinnov.com/centers-of-excellence/5-shifts-defining-indias-global-capability-centers-gccs-story-in-2025-blog/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Zinnov · India GCC Story 2025
+              </a>
+
+            </article>
+
+            <article class="stat reveal reveal-stagger">
+
+              <div>
+                <p class="stat__number">58%</p>
+                <p class="stat__description">
+                  GCCs taking 45+ days to fill critical roles
+                </p>
+              </div>
+
+              <a
+                class="stat__source"
+                href="https://www.ceipal.com/resources/new-gccs-in-india-who-launched-whos-expanding-and-whos-coming-next-2024-2026"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ceipal GCC Talentscope India 2026
+              </a>
+
+            </article>
+
+            <article class="stat reveal reveal-stagger">
+
+              <div>
+                <p class="stat__number">80%</p>
+                <p class="stat__description">
+                  New GCCs prioritising AI/ML from day one
+                </p>
+              </div>
+
+              <a
+                class="stat__source"
+                href="https://alp.consulting/future-of-gccs-in-india-trends/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ALP Consulting · Future of GCCs 2026
+              </a>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SERVICES -->
+      <section
+        class="services"
+        id="services"
+        aria-labelledby="services-title"
+      >
+
+        <div
+          class="services__background-number"
+          aria-hidden="true"
+        >
+          03
+        </div>
+
+        <div class="container services__content reveal">
+
+          <div class="services__intro">
+
+            <div>
+
+              <p class="section-eyebrow">
+                WHAT WE DO
+              </p>
+
+              <h2 class="services__heading" id="services-title">
+                Three ways we help<br>
+                your business <span class="accent">grow</span>
+              </h2>
+
+            </div>
+
+            <p class="services__description">
+              Pick your challenge, we have a dedicated team and a proven
+              playbook for it.
+            </p>
+
+          </div>
+
+          <div class="services__grid">
+
+            <article class="service-card reveal reveal-service">
+
+              <img
+                class="service-card__icon service-card__icon--gcc"
+                src="./assets/gcc-service-icon.png"
+                alt="Global Capability Center"
+                width="65"
+                height="55"
+              >
+
+              <div class="service-card__details">
+
+                <h3 class="service-card__title service-card__title--gcc">
+                  Build your Global Capability Center
+                </h3>
+
+                <p class="service-card__description">
+                  End-to-end GCC setup: location strategy, legal entity,
+                  talent acquisition, and operational ramp-up done in
+                  under 90 days.
+                </p>
+
+                <a class="service-card__explore" href="#contact">
+
+                  <span>Explore</span>
+
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                    width="26"
+                    height="1"
+                  >
+
+                </a>
+
+              </div>
+
+            </article>
+
+            <article class="service-card reveal reveal-service">
+
+              <img
+                class="service-card__icon service-card__icon--rpo"
+                src="./assets/rpo-service-icon.png"
+                alt="RPO service"
+                width="63"
+                height="52"
+              >
+
+              <div class="service-card__details">
+
+                <h3 class="service-card__title service-card__title--rpo">
+                  Scale your team with precision hiring
+                </h3>
+
+                <p class="service-card__description">
+                  AI-powered RPO for tech, healthcare, and executive roles.
+                  We become your embedded talent team, not just a vendor.
+                </p>
+
+                <a class="service-card__explore" href="#contact">
+
+                  <span>Explore</span>
+
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                    width="26"
+                    height="1"
+                  >
+
+                </a>
+
+              </div>
+
+            </article>
+
+            <article class="service-card reveal reveal-service">
+
+              <img
+                class="service-card__icon"
+                src="./assets/ai-service-icon.png"
+                alt="AI and digital transformation"
+                width="64"
+                height="64"
+              >
+
+              <div class="service-card__details">
+
+                <h3 class="service-card__title service-card__title--ai">
+                  Modernise your digital stack
+                </h3>
+
+                <p class="service-card__description">
+                  Cloud migration, Salesforce, ServiceNow, and AI-native
+                  digital transformation, capability-first,
+                  not industry-first.
+                </p>
+
+                <a class="service-card__explore" href="#ai-core">
+
+                  <span>Explore</span>
+
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                    width="26"
+                    height="1"
+                  >
+
+                </a>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- AI -->
+      <section
+        class="ai-core"
+        id="ai-core"
+        aria-labelledby="ai-title"
+      >
+
+        <div class="container ai-core__content reveal">
+
+          <div>
+
+            <p class="section-eyebrow">
+              AI AT OUR CORE
+            </p>
+
+            <h2 class="section-heading ai-core__title" id="ai-title">
+              AI isn’t a feature.<br>
+              It’s how <span class="accent">we deliver</span> everything.
+            </h2>
+
+          </div>
+
+          <img
+            class="ai-core__image"
+            src="./assets/ai-core-image.png"
+            alt="Three colleagues collaborating around a laptop in a modern office"
+            width="1320"
+            height="655"
+          >
+
+          <p class="ai-core__description">
+            Agentic AI runs through every engagement, sourcing candidates faster,
+            automating GCC onboarding, and accelerating digital delivery cycles.
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- CASE STUDIES -->
+      <section
+        class="case-studies"
+        id="case-studies"
+        aria-labelledby="case-studies-title"
+      >
+
+        <div class="case-studies__title reveal">
+
+          <h2
+            class="case-studies__title-text"
+            id="case-studies-title"
+          >
+            work that speaks
+          </h2>
+
+        </div>
+
+        <div class="container case-studies__explore">
+
+          <div class="case-studies__more">
+
+            <a
+              class="case-studies__more-link"
+              href="#contact"
+            >
+              <span>Explore More</span>
+
+              <img
+                src="./assets/1dc09.svg"
+                alt=""
+                width="26"
+                height="1"
+              >
+            </a>
+
+            <img
+              class="case-studies__arrow"
+              src="./assets/arrow-right.svg"
+              alt=""
+              width="24"
+              height="24"
+            >
+
+          </div>
+
+          <div class="case-studies__grid">
+
+            <!-- FINTECH -->
+            <a
+              class="case-study reveal reveal-case"
+              href="#contact"
+              aria-label="GCC setup fintech case study"
+            >
+
+              <div class="case-study__category">
+                GCC setup · Fintech
+              </div>
+
+              <img
+                class="case-study__logo"
+                src="./assets/fintech-logo.svg"
+                alt="Fintech case study logo"
+                width="109"
+                height="24"
+              >
+
+              <div class="case-study__body">
+
+                <div class="case-study__metric">
+
+                  <p class="case-study__value">
+                    90d
+                  </p>
+
+                  <p class="case-study__metric-description">
+                    From brief to first hire
+                  </p>
+
+                </div>
+
+                <div class="case-study__copy">
+
+                  <h3 class="case-study__title">
+                    GCC launched for US fintech in under 90 days
+                  </h3>
+
+                  <p class="case-study__description">
+                    Placeholder. awaiting validated case study.
+                    Do not publish until approved.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </a>
+
+            <!-- HEALTHCARE -->
+            <a
+              class="case-study reveal reveal-case"
+              href="#contact"
+              aria-label="GCC setup healthcare case study"
+            >
+
+              <div class="case-study__category">
+                GCC setup · Healthcare
+              </div>
+
+              <img
+                class="case-study__logo"
+                src="./assets/healthcare-logo.svg"
+                alt="Healthcare case study logo"
+                width="109"
+                height="24"
+              >
+
+              <div class="case-study__body">
+
+                <div class="case-study__metric">
+
+                  <p class="case-study__value">
+                    150+
+                  </p>
+
+                  <p class="case-study__metric-description">
+                    Roles filled, 38-day avg.
+                  </p>
+
+                </div>
+
+                <div class="case-study__copy">
+
+                  <h3 class="case-study__title">
+                    150 specialist healthcare roles filled in Q1
+                  </h3>
+
+                  <p class="case-study__description">
+                    Placeholder. awaiting validated case study.
+                    Do not publish until approved.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </a>
+
+            <!-- MANUFACTURING -->
+            <a
+              class="case-study reveal reveal-case"
+              href="#contact"
+              aria-label="Digital manufacturing case study"
+            >
+
+              <div class="case-study__category">
+                Digital · Manufacturing
+              </div>
+
+              <img
+                class="case-study__logo"
+                src="./assets/manufacturing-logo.svg"
+                alt="Manufacturing case study logo"
+                width="109"
+                height="24"
+              >
+
+              <div class="case-study__body">
+
+                <div class="case-study__metric">
+
+                  <p class="case-study__value">
+                    40%
+                  </p>
+
+                  <p class="case-study__metric-description">
+                    Ops cycle reduction
+                  </p>
+
+                </div>
+
+                <div class="case-study__copy">
+
+                  <h3 class="case-study__title">
+                    Salesforce migration cuts ops cycle by 40%
+                  </h3>
+
+                  <p class="case-study__description">
+                    Placeholder. awaiting validated case study.
+                    Do not publish until approved.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact">
+
+      <!-- READY TO BEGIN -->
+      <div class="footer__top">
+
+        <div class="footer__cta reveal">
+
+          <div class="footer__cta-copy">
+
+            <p class="section-eyebrow footer__eyebrow">
+              READY TO BEGIN?
+            </p>
+
+            <h2 class="footer__title">
+              Let’s Build Something Great Together
+            </h2>
+
+          </div>
+
+          <a
+            class="button button--primary footer__button"
+            href="mailto:hello@talentika.in"
+          >
+            Speak to an Advisor
+          </a>
+
+        </div>
+
+        <div class="footer__cities">
+
+          <!-- FIRST SET: LEFT TO RIGHT -->
+          <div class="ticker">
+
+            <div class="footer__cities-track">
+
+              <span class="footer__city">California, USA</span>
+              <span class="footer__city">London, UK</span>
+              <span class="footer__city">Dublin, Ireland</span>
+              <span class="footer__city">Madrid, Sweden</span>
+              <span class="footer__city">Copenhagen, Denmark</span>
+              <span class="footer__city">Bratislava, Slovakia</span>
+              <span class="footer__city">Pune, India</span>
+              <span class="footer__city">Jurong, Singapore</span>
+              <span class="footer__city">Sydney, Australia</span>
+
+              <span class="footer__city">California, USA</span>
+              <span class="footer__city">London, UK</span>
+              <span class="footer__city">Dublin, Ireland</span>
+              <span class="footer__city">Madrid, Sweden</span>
+              <span class="footer__city">Copenhagen, Denmark</span>
+              <span class="footer__city">Bratislava, Slovakia</span>
+              <span class="footer__city">Pune, India</span>
+              <span class="footer__city">Jurong, Singapore</span>
+              <span class="footer__city">Sydney, Australia</span>
+
+            </div>
+
+          </div>
+
+          <!-- SECOND SET: RIGHT TO LEFT -->
+          <div class="ticker">
+
+            <div class="footer__cities-track footer__cities-track--reverse">
+
+              <span class="footer__city">California, USA</span>
+              <span class="footer__city">London, UK</span>
+              <span class="footer__city">Dublin, Ireland</span>
+              <span class="footer__city">Madrid, Sweden</span>
+              <span class="footer__city">Copenhagen, Denmark</span>
+              <span class="footer__city">Bratislava, Slovakia</span>
+              <span class="footer__city">Pune, India</span>
+              <span class="footer__city">Jurong, Singapore</span>
+              <span class="footer__city">Sydney, Australia</span>
+
+              <span class="footer__city">California, USA</span>
+              <span class="footer__city">London, UK</span>
+              <span class="footer__city">Dublin, Ireland</span>
+              <span class="footer__city">Madrid, Sweden</span>
+              <span class="footer__city">Copenhagen, Denmark</span>
+              <span class="footer__city">Bratislava, Slovakia</span>
+              <span class="footer__city">Pune, India</span>
+              <span class="footer__city">Jurong, Singapore</span>
+              <span class="footer__city">Sydney, Australia</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- MAIN DARK FOOTER -->
+      <div class="footer__main">
+
+        <div class="footer__main-grid">
+
+          <!-- BRAND / CONTACT -->
+          <div class="footer__brand-column reveal">
+
+            <div class="footer__identity">
+
+              <img
+                class="footer__logo"
+                src="./assets/footer-logo.png"
+                alt="Talentika"
+                width="164"
+                height="33"
+              >
+
+              <p class="footer__tagline">
+                Engineering the Workforce<br>
+                Behind Global Innovation.
+              </p>
+
+            </div>
+
+            <div class="footer__service-icons">
+
+              <img
+                class="footer__service-icon footer__service-icon--gcc"
+                src="./assets/footer-gcc.png"
+                alt="GCC"
+              >
+
+              <img
+                class="footer__service-icon footer__service-icon--rpo"
+                src="./assets/footer-rpo.png"
+                alt="RPO Platform"
+              >
+
+              <img
+                class="footer__service-icon footer__service-icon--ai"
+                src="./assets/footer-ai.png"
+                alt="AI and Digital"
+              >
+
+            </div>
+
+            <div class="footer__contact">
+
+              <p class="footer__contact-title">
+                Contact
+              </p>
+
+              <div class="footer__contact-row">
+
+                <a href="mailto:hello@talentika.in">
+                  hello@talentika.in
+                </a>
+
+                <a href="tel:+911234567890">
+                  +91 123 456 7890
+                </a>
+
+              </div>
+
+            </div>
+
+            <div class="footer__socials">
+
+              <a
+                class="footer__social-link"
+                href="#"
+                aria-label="Instagram"
+              >
+                <img
+                  src="./assets/instagram.png"
+                  alt="Instagram"
+                >
+              </a>
+
+              <a
+                class="footer__social-link"
+                href="#"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src="./assets/linkedin.png"
+                  alt="LinkedIn"
+                >
+              </a>
+
+              <a
+                class="footer__social-link"
+                href="#"
+                aria-label="Facebook"
+              >
+                <img
+                  src="./assets/facebook.png"
+                  alt="Facebook"
+                >
+              </a>
+
+              <a
+                class="footer__social-link"
+                href="#"
+                aria-label="X"
+              >
+                <img
+                  src="./assets/x.png"
+                  alt="X"
+                >
+              </a>
+
+            </div>
+
+          </div>
+
+          <!-- FOOTER LINKS -->
+          <div class="footer__links reveal">
+
+            <!-- SERVICES -->
+            <section class="footer__column">
+
+              <h3 class="footer__column-title">
+                Services
+              </h3>
+
+              <nav class="footer__link-list">
+
+                <a class="footer__link" href="#services">
+                  <span>GCC Setup &amp; Advisory</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Location Strategy</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Entity &amp; Compliance</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Tech &amp; Infrastructure</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Tech RPO</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Healthcare RPO</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Executive Search</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#services">
+                  <span>Platform Integration</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+              </nav>
+
+            </section>
+
+            <!-- COMPANY -->
+            <section class="footer__column">
+
+              <h3 class="footer__column-title">
+                Company
+              </h3>
+
+              <nav class="footer__link-list">
+
+                <a class="footer__link" href="#about">
+                  <span>About Talentika</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Careers/Hiring</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#case-studies">
+                  <span>Case Studies</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Insights &amp; Blog</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>GCC Readiness Guide</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+              </nav>
+
+            </section>
+
+            <!-- ECOSYSTEM -->
+            <section class="footer__column">
+
+              <h3 class="footer__column-title">
+                EcoSystem &amp; Platforms
+              </h3>
+
+              <div class="footer__ecosystem">
+
+                <img
+                  class="footer__ecosystem-divider"
+                  src="./assets/divider.svg"
+                  alt=""
+                >
+
+                <a
+                  class="footer__ecosystem-item"
+                  href="#"
+                >
+
+                  <img
+                    class="footer__ecosystem-logo"
+                    src="./assets/deebug-logo.png"
+                    alt="Deebug"
+                  >
+
+                  <img
+                    class="footer__ecosystem-arrow"
+                    src="./assets/ecosystem-arrow.svg"
+                    alt=""
+                  >
+
+                </a>
+
+                <img
+                  class="footer__ecosystem-divider"
+                  src="./assets/divider.svg"
+                  alt=""
+                >
+
+                <a
+                  class="footer__ecosystem-item"
+                  href="#"
+                >
+
+                  <img
+                    class="footer__ecosystem-logo"
+                    src="./assets/gcc-mixer-logo.png"
+                    alt="GCC Mixer"
+                  >
+
+                  <img
+                    class="footer__ecosystem-arrow"
+                    src="./assets/ecosystem-arrow.svg"
+                    alt=""
+                  >
+
+                </a>
+
+                <img
+                  class="footer__ecosystem-divider"
+                  src="./assets/divider.svg"
+                  alt=""
+                >
+
+                <a
+                  class="footer__ecosystem-item"
+                  href="#"
+                >
+
+                  <img
+                    class="footer__ecosystem-logo"
+                    src="./assets/ai-base-camp-logo.png"
+                    alt="AI Base Camp"
+                  >
+
+                  <img
+                    class="footer__ecosystem-arrow"
+                    src="./assets/ecosystem-arrow.svg"
+                    alt=""
+                  >
+
+                </a>
+
+                <img
+                  class="footer__ecosystem-divider"
+                  src="./assets/divider.svg"
+                  alt=""
+                >
+
+              </div>
+
+            </section>
+
+            <!-- CITIES -->
+            <section class="footer__column">
+
+              <h3 class="footer__column-title">
+                Cities We Work in
+              </h3>
+
+              <nav class="footer__link-list">
+
+                <a class="footer__link" href="#">
+                  <span>Pune</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Bengaluru</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Hyderabad</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Mumbai</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+                <a class="footer__link" href="#">
+                  <span>Delhi NCR</span>
+                  <img
+                    src="./assets/1dc09.svg"
+                    alt=""
+                  >
+                </a>
+
+              </nav>
+
+            </section>
+
+          </div>
+
+        </div>
+
+        <!-- COPYRIGHT / LEGAL -->
+        <div class="footer__legal">
+
+          <span>
+            © 2026 Talentika.
+          </span>
+
+          <div class="footer__legal-links">
+
+            <a class="footer__legal-link" href="#">
+              <span>Privacy Policy</span>
+              <img
+                src="./assets/1dc09.svg"
+                alt=""
+              >
+            </a>
+
+            <a class="footer__legal-link" href="#">
+              <span>Terms of Use</span>
+              <img
+                src="./assets/1dc09.svg"
+                alt=""
+              >
+            </a>
+
+            <a class="footer__legal-link" href="#">
+              <span>Cookie Preferences</span>
+              <img
+                src="./assets/1dc09.svg"
+                alt=""
+              >
+            </a>
+
+            <a class="footer__legal-link" href="#">
+              <span>Sitemap</span>
+              <img
+                src="./assets/1dc09.svg"
+                alt=""
+              >
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- DEDICATED FIGMA SKYLINE BOTTOM -->
+      <div class="footer__bottom">
+
+        <img
+          class="footer__skyline"
+          src="./assets/skyline.svg"
+          alt=""
+          width="1448"
+          height="150"
+        >
+
+      </div>
+
+    </footer>
+
+    <!-- CHAT -->
+    <a
+      class="chat"
+      href="#contact"
+      aria-label="Open Talentika contact"
+    >
+      <img
+        src="./assets/chat.svg"
+        alt="Contact Talentika"
+        width="91"
+        height="91"
+      >
+    </a>
+
+  </div>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector(".site-menu-toggle");
+      const mobileMenu = document.querySelector("#mobile-menu");
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener("click", () => {
+          const isOpen =
+            menuButton.getAttribute("aria-expanded") === "true";
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+          );
+
+          menuButton.setAttribute(
+            "aria-label",
+            isOpen
+              ? "Open navigation menu"
+              : "Close navigation menu"
+          );
+
+          mobileMenu.classList.toggle(
+            "is-open",
+            !isOpen
+          );
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuButton.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+
+            mobileMenu.classList.remove("is-open");
+          });
+        });
+      }
+
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => {
+        revealObserver.observe(element);
+      });
+    })();
+  </script>
+
+</body>
+</html>
